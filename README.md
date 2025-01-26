@@ -32,5 +32,9 @@ A dynamic, interactive resume website featuring a unique dark/light mode toggle 
 - LinkedIn: [dong-kevin](https://linkedin.com/in/dong-kevin)
 
 
+## 🚀 Live Demo
+Check out the live site: [Web-Sume](https://yourusername.github.io/web-sume)
+
+
 ---
 <p align="center">Made with 🕒 and a lot of 🍜 </p>
