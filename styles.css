@@ -1,0 +1,282 @@
+:root {
+    --bg-color-light: #f5f5dc; /* Cream background */
+    --text-color-light: #2c2c2c;
+    --bg-color-dark: #121212; /* Darker background */
+    --text-color-dark: #e0e0e0;
+    --container-bg-light: #fff9e6; /* Lighter cream for container */
+    --container-bg-dark: #1a1a1a; /* Darker container */
+    --header-color-light: #4a4a4a;
+    --header-color-dark: #ffffff;
+    --border-light: #d4d4bc; /* Cream-tinted border */
+    --border-dark: #2d2d2d;
+    --font-family: 'Garamond', serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-dark);
+    font-family: var(--font-family);
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--container-bg-dark);
+    border: 1px solid var(--border-dark);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.header h1 {
+    font-size: 2rem;
+    color: var(--header-color-dark);
+}
+
+.header p {
+    font-size: 1rem;
+}
+
+.section {
+    margin-bottom: 2rem;
+}
+
+.section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #ccc;
+}
+
+.toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 12px 24px;  /* Larger padding */
+    background-color: #4a4a4a;
+    color: white;
+    border-radius: 25px;  /* Rounder corners */
+    cursor: pointer;
+    font-size: 14px;     /* Larger font */
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.toggle:hover {
+    background-color: #666666;
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border-color: #888888;
+}
+
+.toggle i {
+    font-size: 16px;
+}
+
+/* Light mode styles */
+.light-mode {
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
+}
+
+.light-mode .container {
+    background: var(--container-bg-light);
+    border-color: var(--border-light);
+}
+
+.light-mode .header h1 {
+    color: var(--header-color-light);
+}
+
+.light-mode .section h2 {
+    border-bottom-color: var(--border-light);
+    color: var(--header-color-light);
+}
+
+.light-mode a {
+    color: #0066cc;
+}
+
+/* Add styles for links */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* This ensures links maintain theme colors */
+.light-mode .header a {
+    color: var(--text-color-light) !important;
+}
+
+.dark-mode .header a {
+    color: var(--text-color-dark) !important;
+}
+
+/* Preloader styles */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease-out;
+}
+
+.preloader.fade-out {
+    opacity: 0;
+}
+
+.welcome-text {
+    color: var(--text-color-dark);
+    font-size: 2.5rem;
+    font-family: var(--font-family);
+}
+
+.welcome-text span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.welcome-text span.animate {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.main-content {
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+}
+
+.main-content.show {
+    opacity: 1;
+}
+
+/* Keep the existing tumbleweed styles */
+.tumbleweed {
+    position: fixed;
+    bottom: -150px;
+    left: -300px;
+    width: 300px;
+    height: 300px;
+    opacity: 0.15;
+    animation: roll 20s linear infinite;
+    z-index: -1;
+}
+
+/* Main structure */
+.tumbleweed::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 15px solid var(--bg-color-light);
+    border-radius: 40% 60% 55% 45% / 45% 45% 55% 55%;
+    transform: rotate(var(--rotation, 0deg));
+}
+
+/* Spiky elements */
+.spikes::before,
+.spikes::after {
+    content: '';
+    position: absolute;
+    width: var(--random-size, 90%);
+    height: var(--random-size, 90%);
+    border: 12px solid var(--bg-color-light);
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    transform: rotate(var(--rotation, 45deg));
+}
+
+/* Branching elements */
+.branch-1::before,
+.branch-1::after {
+    content: '';
+    position: absolute;
+    width: var(--random-size, 85%);
+    height: var(--random-size, 85%);
+    border: 10px solid var(--bg-color-light);
+    border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+}
+
+.branch-2::before,
+.branch-2::after {
+    content: '';
+    position: absolute;
+    width: var(--random-size, 80%);
+    height: var(--random-size, 80%);
+    border: 10px solid var(--bg-color-light);
+    border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+}
+
+.branch-3::before,
+.branch-3::after {
+    content: '';
+    position: absolute;
+    width: var(--random-size, 75%);
+    height: var(--random-size, 75%);
+    border: 10px solid var(--bg-color-light);
+    border-radius: 49% 51% 48% 52% / 57% 43% 57% 43%;
+}
+
+/* Light mode colors */
+.light-mode .tumbleweed::before,
+.light-mode .spikes::before,
+.light-mode .spikes::after,
+.light-mode .branch-1::before,
+.light-mode .branch-1::after,
+.light-mode .branch-2::before,
+.light-mode .branch-2::after,
+.light-mode .branch-3::before,
+.light-mode .branch-3::after {
+    border-color: var(--bg-color-dark);
+}
+
+/* Keep existing animations but add rotation variation */
+@keyframes roll {
+    0% {
+        left: -300px;
+        transform: rotate(0deg);
+    }
+    100% {
+        left: calc(100% + 300px);
+        transform: rotate(1080deg);
+    }
+}
+
+/* Update link styles */
+.header a {
+    color: inherit !important; /* Forces the color to match the parent */
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.header a:hover {
+    opacity: 0.8; /* Subtle hover effect instead of color change */
+}
