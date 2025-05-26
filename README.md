@@ -33,7 +33,7 @@ A dynamic, interactive resume website featuring a unique dark/light mode toggle 
 
 
 ## 🚀 Live Demo
-Check out the live site: [Web-Sume](https://yourusername.github.io/web-sume)
+Check out the live site: [Web-Sume](thekevindong.github.io/Web-Sume/)
 
 
 ---
