@@ -1,10 +1,10 @@
 :root {
     --bg-color-light: #f5f5dc; /* Cream background */
     --text-color-light: #2c2c2c;
-    --bg-color-dark: #121212; /* Darker background */
+    --bg-color-dark: #242323; /* Darker background */
     --text-color-dark: #e0e0e0;
     --container-bg-light: #fff9e6; /* Lighter cream for container */
-    --container-bg-dark: #1a1a1a; /* Darker container */
+    --container-bg-dark: #282727; /* Darker container */
     --header-color-light: #4a4a4a;
     --header-color-dark: #ffffff;
     --border-light: #d4d4bc; /* Cream-tinted border */
@@ -280,3 +280,11 @@ a:hover {
 .header a:hover {
     opacity: 0.8; /* Subtle hover effect instead of color change */
 }
+
+.tech-stack {
+    margin-left: 1rem;
+  }
+
+  .date {
+    float: right;
+  }
