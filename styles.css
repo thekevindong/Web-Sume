@@ -57,9 +57,9 @@ body {
 }
 
 .toggle {
-    position: sticky;
-    top: 50px;
-    right: 20px;
+    position: fixed;
+    top: 32px;         
+    right: 50px;       
     padding: 12px 24px;
     background-color: #4a4a4a;
     color: white;
