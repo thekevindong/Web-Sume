@@ -11,7 +11,7 @@ function toggleTheme() {
 
 // Preloader animation
 document.addEventListener('DOMContentLoaded', () => {
-    const text = "Welcome to Web-Sumé";
+    const text = "Welcome to WebSumé";
     const welcomeText = document.querySelector('.welcome-text');
     const mainContent = document.querySelector('.main-content');
     const preloader = document.querySelector('.preloader');
