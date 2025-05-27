@@ -58,8 +58,8 @@ body {
 
 .toggle {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 0;
+    right: 0;
     padding: 12px 24px;  /* Larger padding */
     background-color: #4a4a4a;
     color: white;
