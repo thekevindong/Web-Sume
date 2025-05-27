@@ -58,20 +58,21 @@ body {
 
 .toggle {
     position: fixed;
-    top: 0;
-    right: 0;
-    padding: 12px 24px;  /* Larger padding */
+    top: 20px;
+    right: 20px;
+    padding: 12px 24px;
     background-color: #4a4a4a;
     color: white;
-    border-radius: 25px;  /* Rounder corners */
+    border-radius: 25px;
     cursor: pointer;
-    font-size: 14px;     /* Larger font */
+    font-size: 14px;
     border: 2px solid transparent;
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
     gap: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
 }
 
 .toggle:hover {
