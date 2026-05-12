@@ -1,15 +1,32 @@
 :root {
-    --bg-color-light: #f5f5dc; /* Cream background */
-    --text-color-light: #2c2c2c;
-    --bg-color-dark: #242323; /* Darker background */
-    --text-color-dark: #e0e0e0;
-    --container-bg-light: #fff9e6; /* Lighter cream for container */
-    --container-bg-dark: #282727; /* Darker container */
-    --header-color-light: #4a4a4a;
-    --header-color-dark: #ffffff;
-    --border-light: #d4d4bc; /* Cream-tinted border */
-    --border-dark: #2d2d2d;
-    --font-family: 'Garamond', serif;
+    /* Light mode — warm paper + ink */
+    --bg-color-light: #f4ede0;
+    --text-color-light: #1f1d1a;
+    --text-muted-light: #6b665d;
+    --container-bg-light: #fbf6ea;
+    --header-color-light: #1a1815;
+    --border-light: #e0d6c2;
+    --accent-light: #b8651f;
+    --accent-light-soft: rgba(184, 101, 31, 0.08);
+
+    /* Dark mode — deep slate + cool teal */
+    --bg-color-dark: #131517;
+    --text-color-dark: #d8dadd;
+    --text-muted-dark: #8a8f95;
+    --container-bg-dark: #1b1e21;
+    --header-color-dark: #f4f5f7;
+    --border-dark: #2a2e33;
+    --accent-dark: #5ec4b6;
+    --accent-dark-soft: rgba(94, 196, 182, 0.1);
+
+    /* Typography */
+    --font-display: 'Fraunces', 'Garamond', serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono: 'JetBrains Mono', 'Menlo', monospace;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
@@ -17,76 +34,226 @@ body {
     padding: 0;
     background-color: var(--bg-color-dark);
     color: var(--text-color-dark);
-    font-family: var(--font-family);
-    line-height: 1.5;
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 2rem;
+    max-width: 820px;
+    margin: 2.5rem auto;
+    padding: 2.5rem 3rem;
     background: var(--container-bg-dark);
     border: 1px solid var(--border-dark);
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
     transition: all 0.3s ease;
 }
 
+/* Header */
 .header {
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .header h1 {
-    font-size: 2rem;
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
     color: var(--header-color-dark);
+    margin: 0 0 0.5rem 0;
 }
 
 .header p {
-    font-size: 1rem;
+    font-size: 0.875rem;
+    color: var(--text-muted-dark);
+    margin: 0;
+    letter-spacing: 0.01em;
 }
 
+.header p + p {
+    margin-top: 0.15rem;
+}
+
+.header p b {
+    color: var(--border-dark);
+    font-weight: 400;
+    margin: 0 0.4rem;
+}
+
+.light-mode .header p b {
+    color: var(--border-light);
+}
+
+/* Sections */
 .section {
-    margin-bottom: 2rem;
+    margin-bottom: 1.75rem;
 }
 
 .section h2 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    border-bottom: 1px solid #ccc;
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent-dark);
+    margin: 0 0 1rem 0;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--border-dark);
 }
 
+.light-mode .section h2 {
+    color: var(--accent-light);
+    border-bottom-color: var(--border-light);
+}
+
+.section p {
+    margin: 0.75rem 0 0.25rem 0;
+    font-size: 0.9375rem;
+}
+
+.section p strong {
+    font-weight: 600;
+    color: var(--header-color-dark);
+    font-size: 0.9375rem;
+}
+
+.light-mode .section p strong {
+    color: var(--header-color-light);
+}
+
+.section p i {
+    color: var(--text-muted-dark);
+    font-style: italic;
+}
+
+.light-mode .section p i {
+    color: var(--text-muted-light);
+}
+
+.section ul {
+    margin: 0.4rem 0 0.75rem 0;
+    padding-left: 1.25rem;
+}
+
+.section ul li {
+    margin-bottom: 0.3rem;
+    font-size: 0.875rem;
+    line-height: 1.55;
+}
+
+.section ul li::marker {
+    color: var(--accent-dark);
+}
+
+.light-mode .section ul li::marker {
+    color: var(--accent-light);
+}
+
+/* Tech stack pill */
+.tech-stack {
+    display: inline-block;
+    margin-left: 0.75rem;
+    padding: 0.15rem 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-style: normal !important;
+    color: var(--accent-dark);
+    background: var(--accent-dark-soft);
+    border-radius: 4px;
+    letter-spacing: 0.02em;
+}
+
+.light-mode .tech-stack {
+    color: var(--accent-light);
+    background: var(--accent-light-soft);
+}
+
+/* Date */
+.date {
+    float: right;
+    font-size: 0.8125rem;
+    color: var(--text-muted-dark);
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-style: normal !important;
+    letter-spacing: 0.01em;
+}
+
+.light-mode .date {
+    color: var(--text-muted-light);
+}
+
+/* Project icon links */
+.section p a i.fab,
+.section p a i.fa-solid {
+    color: var(--text-muted-dark);
+    font-size: 0.875rem;
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.section p a:hover i.fab,
+.section p a:hover i.fa-solid {
+    color: var(--accent-dark);
+    transform: translateY(-1px);
+}
+
+.light-mode .section p a i.fab,
+.light-mode .section p a i.fa-solid {
+    color: var(--text-muted-light);
+}
+
+.light-mode .section p a:hover i.fab,
+.light-mode .section p a:hover i.fa-solid {
+    color: var(--accent-light);
+}
+
+/* Toggle button */
 .toggle {
     position: fixed;
-    top: 32px;         
-    right: 50px;       
-    padding: 12px 24px;
-    background-color: #4a4a4a;
-    color: white;
-    border-radius: 25px;
+    top: 24px;
+    right: 24px;
+    padding: 0.5rem 1rem;
+    background-color: var(--container-bg-dark);
+    color: var(--text-color-dark);
+    border: 1px solid var(--border-dark);
+    border-radius: 100px;
     cursor: pointer;
-    font-size: 14px;
-    border: 2px solid transparent;
-    transition: all 0.3s ease;
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
     display: flex;
     align-items: center;
-    gap: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    gap: 0.4rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
     z-index: 1000;
 }
 
 .toggle:hover {
-    background-color: #666666;
-    transform: scale(1.15);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    border-color: #888888;
+    border-color: var(--accent-dark);
+    color: var(--accent-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.toggle i {
-    font-size: 16px;
+.light-mode .toggle {
+    background-color: var(--container-bg-light);
+    color: var(--text-color-light);
+    border-color: var(--border-light);
 }
 
-/* Light mode styles */
+.light-mode .toggle:hover {
+    border-color: var(--accent-light);
+    color: var(--accent-light);
+}
+
+/* Light mode body */
 .light-mode {
     background-color: var(--bg-color-light);
     color: var(--text-color-light);
@@ -95,41 +262,47 @@ body {
 .light-mode .container {
     background: var(--container-bg-light);
     border-color: var(--border-light);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
 }
 
 .light-mode .header h1 {
     color: var(--header-color-light);
 }
 
-.light-mode .section h2 {
-    border-bottom-color: var(--border-light);
-    color: var(--header-color-light);
+.light-mode .header p {
+    color: var(--text-muted-light);
 }
 
-.light-mode a {
-    color: #0066cc;
-}
-
-/* Add styles for links */
+/* Links */
 a {
     text-decoration: none;
     color: inherit;
+    transition: color 0.2s ease;
 }
 
 a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
-/* This ensures links maintain theme colors */
-.light-mode .header a {
-    color: var(--text-color-light) !important;
+.header a u {
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
 }
 
-.dark-mode .header a {
-    color: var(--text-color-dark) !important;
+.header a:hover u {
+    border-bottom-color: var(--accent-dark);
 }
 
-/* Preloader styles */
+.light-mode .header a:hover u {
+    border-bottom-color: var(--accent-light);
+}
+
+.header a {
+    color: inherit !important;
+}
+
+/* Preloader */
 .preloader {
     position: fixed;
     top: 0;
@@ -150,8 +323,10 @@ a:hover {
 
 .welcome-text {
     color: var(--text-color-dark);
-    font-size: 2.5rem;
-    font-family: var(--font-family);
+    font-family: var(--font-display);
+    font-size: 2.75rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
 }
 
 .welcome-text span {
@@ -180,49 +355,46 @@ a:hover {
     opacity: 1;
 }
 
-/* Keep the existing tumbleweed styles */
+/* Tumbleweed (kept, just tied to accent) */
 .tumbleweed {
     position: fixed;
     bottom: -150px;
     left: -300px;
     width: 300px;
     height: 300px;
-    opacity: 0.15;
+    opacity: 0.12;
     animation: roll 20s linear infinite;
     z-index: -1;
 }
 
-/* Main structure */
 .tumbleweed::before {
     content: '';
     position: absolute;
     width: 100%;
     height: 100%;
-    border: 15px solid var(--bg-color-light);
+    border: 15px solid var(--accent-dark);
     border-radius: 40% 60% 55% 45% / 45% 45% 55% 55%;
     transform: rotate(var(--rotation, 0deg));
 }
 
-/* Spiky elements */
 .spikes::before,
 .spikes::after {
     content: '';
     position: absolute;
     width: var(--random-size, 90%);
     height: var(--random-size, 90%);
-    border: 12px solid var(--bg-color-light);
+    border: 12px solid var(--accent-dark);
     border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
     transform: rotate(var(--rotation, 45deg));
 }
 
-/* Branching elements */
 .branch-1::before,
 .branch-1::after {
     content: '';
     position: absolute;
     width: var(--random-size, 85%);
     height: var(--random-size, 85%);
-    border: 10px solid var(--bg-color-light);
+    border: 10px solid var(--accent-dark);
     border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
 }
 
@@ -232,7 +404,7 @@ a:hover {
     position: absolute;
     width: var(--random-size, 80%);
     height: var(--random-size, 80%);
-    border: 10px solid var(--bg-color-light);
+    border: 10px solid var(--accent-dark);
     border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
 }
 
@@ -242,11 +414,10 @@ a:hover {
     position: absolute;
     width: var(--random-size, 75%);
     height: var(--random-size, 75%);
-    border: 10px solid var(--bg-color-light);
+    border: 10px solid var(--accent-dark);
     border-radius: 49% 51% 48% 52% / 57% 43% 57% 43%;
 }
 
-/* Light mode colors */
 .light-mode .tumbleweed::before,
 .light-mode .spikes::before,
 .light-mode .spikes::after,
@@ -256,10 +427,9 @@ a:hover {
 .light-mode .branch-2::after,
 .light-mode .branch-3::before,
 .light-mode .branch-3::after {
-    border-color: var(--bg-color-dark);
+    border-color: var(--accent-light);
 }
 
-/* Keep existing animations but add rotation variation */
 @keyframes roll {
     0% {
         left: -300px;
@@ -271,21 +441,283 @@ a:hover {
     }
 }
 
-/* Update link styles */
-.header a {
-    color: inherit !important; /* Forces the color to match the parent */
+/* Mobile */
+@media (max-width: 720px) {
+    body {
+        font-size: 13px;
+    }
+
+    .container {
+        margin: 1rem;
+        padding: 1.5rem 1.25rem;
+    }
+
+    .header h1 {
+        font-size: 1.875rem;
+    }
+
+    .header p {
+        font-size: 0.8125rem;
+        line-height: 1.7;
+    }
+
+    .header p b {
+        display: inline-block;
+    }
+
+    .date {
+        float: none;
+        display: block;
+        margin-top: 0.15rem;
+        font-size: 0.75rem;
+    }
+
+    .tech-stack {
+        display: inline-block;
+        margin: 0.2rem 0 0.2rem 0;
+        font-size: 0.65rem;
+    }
+
+    .toggle {
+        top: 16px;
+        right: 16px;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+    }
+
+    .welcome-text {
+        font-size: 1.75rem;
+        padding: 0 1rem;
+        text-align: center;
+    }
+}
+
+/* ===== Course Popover ===== */
+a.course {
+    display: inline-block;
+    padding: 0.1rem 0.5rem;
+    margin: 0.15rem 0.1rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--accent-dark);
+    background: var(--accent-dark-soft);
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    white-space: nowrap;
     text-decoration: none;
-    transition: opacity 0.3s ease;
+    vertical-align: baseline;
 }
 
-.header a:hover {
-    opacity: 0.8; /* Subtle hover effect instead of color change */
+a.course:hover,
+a.course:focus {
+    border-color: var(--accent-dark);
+    outline: none;
+    text-decoration: none;
 }
 
-.tech-stack {
-    margin-left: 1rem;
-  }
+.light-mode a.course {
+    color: var(--accent-light);
+    background: var(--accent-light-soft);
+}
 
-  .date {
-    float: right;
-  }
+.light-mode a.course:hover,
+.light-mode a.course:focus {
+    border-color: var(--accent-light);
+}
+
+.course-popover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 320px;
+    max-width: calc(100vw - 32px);
+    padding: 0.85rem 1rem;
+    background: var(--container-bg-dark);
+    border: 1px solid var(--border-dark);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    color: var(--text-color-dark);
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4px);
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+    z-index: 1100;
+    pointer-events: none;
+}
+
+.course-popover.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.course-popover.measuring {
+    opacity: 0;
+    visibility: visible;
+    transform: none;
+    pointer-events: none;
+}
+
+.light-mode .course-popover {
+    background: var(--container-bg-light);
+    border-color: var(--border-light);
+    color: var(--text-color-light);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.course-popover-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.3rem;
+}
+
+.course-popover-code {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--accent-dark);
+    letter-spacing: 0.02em;
+}
+
+.light-mode .course-popover-code {
+    color: var(--accent-light);
+}
+
+.course-popover-credits {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-muted-dark);
+    padding: 0.1rem 0.45rem;
+    border: 1px solid var(--border-dark);
+    border-radius: 100px;
+}
+
+.light-mode .course-popover-credits {
+    color: var(--text-muted-light);
+    border-color: var(--border-light);
+}
+
+.course-popover-title {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--header-color-dark);
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.005em;
+}
+
+.light-mode .course-popover-title {
+    color: var(--header-color-light);
+}
+
+.course-popover-desc {
+    font-size: 0.8125rem;
+    color: var(--text-muted-dark);
+    margin-bottom: 0.6rem;
+}
+
+.light-mode .course-popover-desc {
+    color: var(--text-muted-light);
+}
+
+.course-popover-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--accent-dark);
+    text-decoration: none;
+    padding: 0.3rem 0.6rem;
+    border: 1px solid var(--border-dark);
+    border-radius: 6px;
+    transition: all 0.15s ease;
+}
+
+.course-popover-link:hover {
+    border-color: var(--accent-dark);
+    background: var(--accent-dark-soft);
+}
+
+.course-popover-link i {
+    font-size: 0.7rem;
+}
+
+.light-mode .course-popover-link {
+    color: var(--accent-light);
+    border-color: var(--border-light);
+}
+
+.light-mode .course-popover-link:hover {
+    border-color: var(--accent-light);
+    background: var(--accent-light-soft);
+}
+
+@media (max-width: 720px) {
+    .course-popover {
+        width: 280px;
+        font-size: 0.8125rem;
+    }
+}
+
+/* Print — keep it useful */
+@media print {
+    body {
+        background: white;
+        color: black;
+        font-size: 11px;
+    }
+
+    .container {
+        max-width: 100%;
+        margin: 0;
+        padding: 1rem;
+        box-shadow: none;
+        border: none;
+        background: white;
+    }
+
+    .toggle,
+    .tumbleweed,
+    .preloader,
+    .course-popover {
+        display: none !important;
+    }
+
+    a.course {
+        background: transparent;
+        color: black;
+        padding: 0;
+        border: none;
+        font-family: inherit;
+        text-decoration: none;
+    }
+
+    .main-content {
+        opacity: 1 !important;
+    }
+
+    .section h2 {
+        color: #000;
+        border-bottom-color: #000;
+    }
+
+    .tech-stack {
+        background: transparent;
+        color: #555;
+        padding: 0;
+    }
+
+    a {
+        color: black !important;
+    }
+}
